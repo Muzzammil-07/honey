@@ -1,0 +1,80 @@
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to right, #e0f7fa, #80deea); /* Light cyan to teal gradient */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    width: 300px;
+    text-align: center;
+}
+
+h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #5a2d91; /* Deep purple */
+}
+
+.alert {
+    color: #155724;
+    background-color: #d4edda;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #c3e6cb;
+    border-radius: 5px;
+}
+
+form input[type="text"],
+form input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+form input[type="text"]:focus,
+form input[type="password"]:focus {
+    border-color: #5a2d91; /* Deep purple */
+    box-shadow: 0 0 5px rgba(90, 45, 145, 0.5); /* Soft glow */
+}
+
+form button {
+    padding: 10px 20px;
+    background-color: #6f42c1; /* Royal purple */
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+form button:hover {
+    background-color: #5a2d91; /* Darker royal purple */
+    transform: translateY(-2px); /* Lift effect */
+}
+
+.stop-button {
+    margin-top: 15px;
+    padding: 10px 20px;
+    background-color: #dc3545; /* Bootstrap danger color */
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.stop-button:hover {
+    background-color: #c82333; /* Darker red */
+    transform: translateY(-2px); /* Lift effect */
+}
