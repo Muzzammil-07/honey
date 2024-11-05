@@ -27,8 +27,8 @@ def save_to_excel_and_upload(user_info):
         workbook = openpyxl.load_workbook(filename)
     except FileNotFoundError:
         workbook = openpyxl.Workbook()
+        workbook.active.title = "user_data"
     sheet = workbook.active
-    sheet.title = "user_data"
     
     # If it's a new file, add headers
     if sheet.max_row == 1:
@@ -44,13 +44,16 @@ def save_to_excel_and_upload(user_info):
     upload_to_google_drive(filename)
 
 def upload_to_google_drive(filename):
-    file_metadata = {
-        'name': filename,
-        'parents': [GOOGLE_DRIVE_FOLDER_ID]
-    }
-    media = MediaFileUpload(filename, mimetype='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
-    file = drive_service.files().create(body=file_metadata, media_body=media, fields='id').execute()
-    print(f"File uploaded to Google Drive with ID: {file.get('id')}")
+    try:
+        file_metadata = {
+            'name': filename,
+            'parents': [GOOGLE_DRIVE_FOLDER_ID]
+        }
+        media = MediaFileUpload(filename, mimetype='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
+        file = drive_service.files().create(body=file_metadata, media_body=media, fields='id').execute()
+        print(f"File uploaded to Google Drive with ID: {file.get('id')}")
+    except Exception as e:
+        print("Failed to upload to Google Drive:", e)
 
 # Routes
 @app.route('/', methods=['GET', 'POST'])
